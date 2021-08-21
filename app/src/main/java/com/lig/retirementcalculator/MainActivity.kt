@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import com.microsoft.appcenter.AppCenter
 import com.microsoft.appcenter.analytics.Analytics
 import com.microsoft.appcenter.crashes.Crashes
@@ -20,6 +21,7 @@ class MainActivity : AppCompatActivity() {
         val editText_interest = findViewById<EditText>(R.id.interestEditText)
         val editText_current_age = findViewById<EditText>(R.id.ageEditText)
         val editText_retirement_age = findViewById<EditText>(R.id.retirementEditText)
+        val textview_result = findViewById<TextView>(R.id.resultTextView)
 
         btn.setOnClickListener {
             //Crashes.generateTestCrash()
@@ -39,11 +41,12 @@ class MainActivity : AppCompatActivity() {
                 if(retirementAge <= currentAge){
                     Analytics.trackEvent("Wrong age", properties)
                 }
+
+                textview_result.text = "At current rate of $interstRate"
+
             }catch (ex: Exception){
                 Analytics.trackEvent(ex.message)
             }
-
-
         }
     }
 }
