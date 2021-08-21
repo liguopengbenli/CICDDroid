@@ -16,7 +16,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         AppCenter.setLogLevel(Log.VERBOSE)
-        AppCenter.start(application, "15666653-f39c-403b-a5b3-5539438a853e", Analytics::class.java, Crashes::class.java)
+        AppCenter.start(application, "01d935a9-cb36-4953-946f-7032bfe56b8c", Analytics::class.java, Crashes::class.java)
+      
         val btn  = findViewById<Button>(R.id.calculateButton)
         val editText_interest = findViewById<EditText>(R.id.interestEditText)
         val editText_current_age = findViewById<EditText>(R.id.ageEditText)
