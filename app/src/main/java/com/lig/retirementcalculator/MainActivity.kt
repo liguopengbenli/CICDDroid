@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
                     Analytics.trackEvent("Wrong_interest_rate", properties)
                 }
                 if(retirementAge <= currentAge){
-                    Analytics.trackEvent("Wrong age", properties)
+                    Analytics.trackEvent("Wrong age you can't retire before", properties)
                 }
 
                 textview_result.text = "At current rate of $interstRate"
