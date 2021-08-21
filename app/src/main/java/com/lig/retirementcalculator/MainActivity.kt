@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import com.microsoft.appcenter.AppCenter
 import com.microsoft.appcenter.analytics.Analytics
 import com.microsoft.appcenter.crashes.Crashes
@@ -15,11 +16,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         AppCenter.setLogLevel(Log.VERBOSE)
-        AppCenter.start(application, "15666653-f39c-403b-a5b3-5539438a853e", Analytics::class.java, Crashes::class.java)
+        AppCenter.start(application, "01d935a9-cb36-4953-946f-7032bfe56b8c", Analytics::class.java, Crashes::class.java)
+      
         val btn  = findViewById<Button>(R.id.calculateButton)
         val editText_interest = findViewById<EditText>(R.id.interestEditText)
         val editText_current_age = findViewById<EditText>(R.id.ageEditText)
         val editText_retirement_age = findViewById<EditText>(R.id.retirementEditText)
+        val textview_result = findViewById<TextView>(R.id.resultTextView)
 
         btn.setOnClickListener {
             //Crashes.generateTestCrash()
@@ -37,13 +40,14 @@ class MainActivity : AppCompatActivity() {
                     Analytics.trackEvent("Wrong_interest_rate", properties)
                 }
                 if(retirementAge <= currentAge){
-                    Analytics.trackEvent("Wrong age", properties)
+                    Analytics.trackEvent("Wrong age you can't retire before", properties)
                 }
+
+                textview_result.text = "At current rate of $interstRate"
+
             }catch (ex: Exception){
                 Analytics.trackEvent(ex.message)
             }
-
-
         }
     }
 }
