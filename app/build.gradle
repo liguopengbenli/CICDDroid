@@ -6,7 +6,7 @@ plugins {
 android {
     signingConfigs {
         release {
-            storeFile file('/Users/guopengli/AndroidStudioProjects/CICDDroid/cicdkeystore.keystore')
+            storeFile rootProject.file('cicdkeystore.keystore')
             storePassword 'liguopeng'
             keyAlias 'cicdkeystore'
             keyPassword 'liguopeng'
