@@ -4,6 +4,7 @@ plugins {
 }
 
 android {
+    compileSdk 31
     Properties properties = new Properties()
     properties.load(project.rootProject.file('local.properties').newDataInputStream())
 
@@ -15,7 +16,6 @@ android {
             keyPassword properties.getProperty('RELEASE_KEY_PASSWORD')
         }
     }
-    compileSdk 31
 
     defaultConfig {
         applicationId "com.lig.retirementcalculator"
