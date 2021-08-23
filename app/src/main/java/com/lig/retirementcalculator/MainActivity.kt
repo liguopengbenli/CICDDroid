@@ -6,6 +6,7 @@ import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import com.microsoft.appcenter.AppCenter
 import com.microsoft.appcenter.analytics.Analytics
 import com.microsoft.appcenter.crashes.Crashes
@@ -22,6 +23,14 @@ class MainActivity : AppCompatActivity() {
             Analytics::class.java,
             Crashes::class.java
         )
+        val future = Crashes.hasCrashedInLastSession()
+
+        future.thenAccept {
+            if (it){
+                Toast.makeText(this, "Oops! sorry about that", Toast.LENGTH_LONG).show()
+            }
+        }
+
 
         val btn = findViewById<Button>(R.id.calculateButton)
         val editText_interest = findViewById<EditText>(R.id.interestEditText)
@@ -32,7 +41,7 @@ class MainActivity : AppCompatActivity() {
         val textview_result = findViewById<TextView>(R.id.resultTextView)
 
         btn.setOnClickListener {
-            //Crashes.generateTestCrash()
+            Crashes.generateTestCrash()
             //throw Exception("Something wrong happened")
             try {
                 val interstRate = editText_interest.text.toString().toFloat()
