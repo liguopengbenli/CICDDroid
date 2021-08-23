@@ -1,3 +1,4 @@
+echo "pre build script start"
 if [ -z "$VERSION_NAME"] 
 then 
     echo "You need to define the VERSION_NAME variable in App Center"
@@ -14,3 +15,5 @@ then
     echo "File content:"
     cat $ANDROID_GRADLE_FILE
 fi
+
+echo "pre build script end"
